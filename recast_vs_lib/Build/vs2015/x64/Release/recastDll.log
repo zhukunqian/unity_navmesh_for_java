@@ -1,0 +1,9 @@
+﻿cl : 命令行 warning D9025: 正在重写“/sdl-”(用“/GS-”)
+cl : 命令行 warning D9007: “/Gm”需要“/Zi 或 /ZI”；选项被忽略
+cl : 命令行 warning D9002: 忽略未知选项“/arch:SSE2”
+  javalib.cpp
+  javalib.obj : 找到 MSIL .netmodule 或使用 /GL 编译的模块；正在使用 /LTCG 重新启动链接；将 /LTCG 添加到链接命令行以改进链接器性能
+    正在创建库 ..\..\Bin\recastDll.lib 和对象 ..\..\Bin\recastDll.exp
+  正在生成代码
+  已完成代码的生成
+  recastDll.vcxproj -> D:\fs_mobile\programs\doc\recastnavigation\recast_fs_vs_demo\Build\vs2015\x64\Release\recastDll.dll

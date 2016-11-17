@@ -1,0 +1,5 @@
+﻿  javalib.cpp
+D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xlocale(341): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+    正在创建库 ..\..\Bin\recastDll.lib 和对象 ..\..\Bin\recastDll.exp
+  recastDll.vcxproj -> G:\work\recast_demo\Build\vs2015\x64\Debug\recastDll.dll

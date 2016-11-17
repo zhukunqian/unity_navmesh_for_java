@@ -1,0 +1,44 @@
+﻿  RecastRegion.cpp
+g:\work\recast_demo\source\recastregion.cpp(1044): warning C4100: “overlaps”: 未引用的形参
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  RecastRasterization.cpp
+  RecastMeshDetail.cpp
+g:\work\recast_demo\source\recastmeshdetail.cpp(514): warning C4100: “nverts”: 未引用的形参
+  RecastMesh.cpp
+  RecastLayers.cpp
+  RecastFilter.cpp
+  RecastContour.cpp
+  RecastArea.cpp
+  RecastAlloc.cpp
+  Recast.cpp
+  DetourTileCacheBuilder.cpp
+  DetourTileCache.cpp
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  DetourProximityGrid.cpp
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  DetourPathQueue.cpp
+  DetourPathCorridor.cpp
+  DetourObstacleAvoidance.cpp
+g:\work\recast_demo\source\detourobstacleavoidance.cpp(334): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  DetourNode.cpp
+  DetourNavMeshQuery.cpp
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  DetourNavMeshBuilder.cpp
+  DetourNavMesh.cpp
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  正在生成代码...
+  正在编译...
+  DetourLocalBoundary.cpp
+  DetourCrowd.cpp
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  DetourCommon.cpp
+  DetourAlloc.cpp
+  fsdemo.cpp
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\xlocale(341): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  NavMesh.cpp
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\xlocale(341): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+d:\program files (x86)\microsoft visual studio 14.0\vc\include\exception(358): warning C4577: 在未指定异常处理模式的情况下使用了 "noexcept"；不一定会在异常时终止。指定 /EHsc
+  正在生成代码...
+  recast.vcxproj -> G:\work\recast_demo\Build\vs2015\..\..\Bin\recast.exe
