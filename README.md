@@ -11,7 +11,7 @@ you can use build/recast.jar directly,it include dll lib for win64 and so lib fo
 
 you can load navmesh data by absolutePath:
 
-using recast.load(String absolutePath)
+using recast.load(String absolutePath) method
 
     RecastLib recast = new RecastLib();
 	String path = new File(
@@ -26,7 +26,7 @@ or
 
 load navmesh data by byte[] data directly
 
-using recast.load2(String meshName,byte[] meshData)
+using recast.load2(String meshName,byte[] meshData) method
 
 	RecastLib recast = new RecastLib();
 	InputStream in = Thread.currentThread().getContextClassLoader().getResource("srv_CAIBakedNavmesh.navmesh")
@@ -37,7 +37,7 @@ using recast.load2(String meshName,byte[] meshData)
 		System.out.println("load navmesh failed");
 	}
 
-then use got meshId,use it to find paths:
+then use meshId to find paths by find() method.
 
 	/*
 	* x1,y1,z1 start position
@@ -50,7 +50,7 @@ then use got meshId,use it to find paths:
 
 coordate system is the same as unity's, Y axis is up.
 
-if use want to release navmesh use release(int navmeshId)
+if use want to release navmesh memory , use release(int navmeshId) method
 
 	public int release(int navmeshId);
 
