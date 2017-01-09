@@ -225,10 +225,10 @@ bool NavMesh::create_core(uint8* data, size_t flen) {
 
 int NavMesh::findStraightPath(const float* start, const float* end, std::vector<Position3D>& paths)
 {
- 
+
 	// recast navmesh的查询接口。
 	dtNavMeshQuery* navmeshQuery = navmeshLayer.pNavmeshQuery;
- 
+
 	// 这里好像是设置寻路相关的参数
 	dtQueryFilter filter;
 	filter.setIncludeFlags(0xffff);
@@ -296,7 +296,62 @@ int NavMesh::findStraightPath(const float* start, const float* end, std::vector<
 			//DEBUG_MSG(fmt::format("NavMeshHandle::findStraightPath: {}->{}, {}, {}\n", pos, currpos.x, currpos.y, currpos.z));
 		}
 	}
-
-
 	return pos;
 }
+	int NavMesh::raycast(const float* start, const float* end, std::vector<Position3D>& hitPoints)
+	{
+		float hitPoint[3];
+		// recast navmesh的查询接口。
+		dtNavMeshQuery* navmeshQuery = navmeshLayer.pNavmeshQuery;
+
+		// 这里好像是设置寻路相关的参数
+		dtQueryFilter filter;
+		filter.setIncludeFlags(0xffff);
+		filter.setExcludeFlags(0);
+
+		// 这也是相关参数，是做什么用的
+		const float extents[3] = { 2.f, 4.f, 2.f };
+
+		dtPolyRef startRef = INVALID_NAVMESH_POLYREF;
+
+		float nearestPt[3];
+
+		navmeshQuery->findNearestPoly(start, extents, &filter, &startRef, nearestPt);
+
+		if (!startRef) {
+			return NAV_ERROR_NEARESTPOLY;
+		}
+
+		float t = 0;
+		float hitNormal[3];
+		memset(hitNormal,0,sizeof(hitNormal));
+
+		dtPolyRef polys[MAX_POLYS];
+		int npolys;
+
+		navmeshQuery->raycast(startRef, start, end, &filter, &t, hitNormal, polys, &npolys, MAX_POLYS);
+		if (t > 1) {
+			// no hit;
+			return NAV_ERROR;
+		}
+		else {
+			// hit
+			hitPoint[0] = start[0] + (end[0] - start[0])*t;
+			hitPoint[1] = start[1] + (end[1] - start[1])*t;
+			hitPoint[2] = start[2] + (end[2] - start[2])*t;
+			if (npolys) {
+				float h = 0;
+				navmeshQuery->getPolyHeight(polys[npolys - 1], hitPoint, &h);
+				hitPoint[1] = h;
+			}
+		}
+		Position3D pos;
+		pos.x = hitPoint[0];
+		pos.y = hitPoint[1];
+		pos.z = hitPoint[2];
+		hitPoints.push_back(pos);
+		return 1;
+	}
+
+	
+ 

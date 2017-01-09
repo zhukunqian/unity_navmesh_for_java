@@ -57,6 +57,14 @@ public class RecastLibDemo {
 		System.out.println("recast.find () 使用时间:" + (time2 - time1));
 
 		time1 = System.currentTimeMillis();
+		for (int m = 0; m < 1000000; m++) {
+			recast.raycast(meshId, start[0], start[1], start[2], end[0], end[1], end[2]);
+		}
+		time2 = System.currentTimeMillis();
+
+		System.out.println("recast.raycast () 使用时间:" + (time2 - time1));
+		
+		time1 = System.currentTimeMillis();
 		recast.testPermance(meshId, start[0], start[1], start[2], end[0], end[1], end[2]);
 		time2 = System.currentTimeMillis();
 		System.out.println("recast.testPerfor () 使用时间:" + (time2 - time1));

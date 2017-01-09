@@ -1,0 +1,4 @@
+https://github.com/zhukunqian/unity_navmesh_for_java
+
+一个jar库，可以直接放在自己的工程中用，可以使用导航网格寻路。
+使用工具从unity中导出导航网格数据后，可以直接通过jar库提供的方法直接调用。

@@ -15,6 +15,7 @@ class NavMesh
 public:
 	static const int MAX_POLYS = 256;
 	static const int NAV_ERROR_NEARESTPOLY = -2;
+	static const int NAV_ERROR = -1;
 
 	static const long RCN_NAVMESH_VERSION = 1;
 	static const int INVALID_NAVMESH_POLYREF = 0;
@@ -26,6 +27,8 @@ public:
 	bool create(std::string path);
 
 	int findStraightPath(const float* start, const float* end, std::vector<Position3D>& paths);
+	int raycast(const float* start, const float* end, std::vector<Position3D>& hitPoints);
+	
 
 	std::string resPath;
 

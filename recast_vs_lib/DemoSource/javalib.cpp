@@ -131,6 +131,60 @@ JNIEXPORT jobject JNICALL Java_RecastLib_find
 	return NULL;
 }
 
+JNIEXPORT jobject JNICALL Java_RecastLib_raycast
+(JNIEnv * env, jobject jobj, jint navMeshId, jfloat x1, jfloat y1, jfloat z1, jfloat x2, jfloat y2, jfloat z2)
+{
+	std::tr1::unordered_map<int, NavMesh*>::iterator iter = meshHandlers.find(navMeshId);
+	if (iter == meshHandlers.end())
+	{
+		// Î´²éÕÒµ½navMeshId
+		return NULL;
+	}
+	NavMesh* nav = iter->second;
+
+	float start[3];
+	start[0] = x1;
+	start[1] = y1;
+	start[2] = z1;
+
+	float end[3];
+	end[0] = x2;
+	end[1] = y2;
+	end[2] = z2;
+
+
+	std::vector<Position3D> hitPoints;
+
+	int ret = nav->raycast(start, end, hitPoints);
+
+	if (ret == 1) {
+		jclass class_arraylist = env->FindClass("java/util/ArrayList");
+		jmethodID hashmap_construct_method = env->GetMethodID(class_arraylist, "<init>", "()V");
+		jobject obj_hashmap = env->NewObject(class_arraylist, hashmap_construct_method, "");
+
+		jmethodID arraylist_add_method = env->GetMethodID(class_arraylist, "add", "(Ljava/lang/Object;)Z");
+		int m = 0;
+		std::vector<Position3D>::iterator iter = hitPoints.begin();
+		for (; iter != hitPoints.end(); ++iter)
+		{
+			jfloat tmp[3];
+			tmp[0] = iter->x;
+			tmp[1] = iter->y;
+			tmp[2] = iter->z;
+			jfloatArray args = (env)->NewFloatArray(3);
+			env->SetFloatArrayRegion(args, 0, 3, tmp);
+
+			env->CallBooleanMethod(obj_hashmap, arraylist_add_method, args);
+
+			m++;
+		}
+
+		return obj_hashmap;
+	}
+
+	return NULL;
+}
+
 JNIEXPORT void JNICALL Java_RecastLib_release
 (JNIEnv *, jobject, jint navMeshId) {
 	std::tr1::unordered_map<int, NavMesh*>::iterator iter = meshHandlers.find(navMeshId);
@@ -175,6 +229,7 @@ static JNINativeMethod s_methods[] = {
 	{ "load",  "(Ljava/lang/String;)I", (void*)Java_RecastLib_load1 },
 	{ "load2",  "(Ljava/lang/String;[B)I", (void*)Java_RecastLib_load2 },
 	{ "find",  "(IFFFFFF)Ljava/util/List;", (void*)Java_RecastLib_find },
+	{ "raycast",  "(IFFFFFF)Ljava/util/List;", (void*)Java_RecastLib_raycast },
 	{ "release",  "(I)I", (void*)Java_RecastLib_release },
 	{ "testPermance",  "(IFFFFFF)V", (void*)Java_RecastLib_testPermance },
 };

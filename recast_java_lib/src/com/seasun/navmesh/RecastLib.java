@@ -40,6 +40,11 @@ public class RecastLib {
 	// 返回路径点列表，注意，查找不到时，会返回null，或list.size==0
 	public native List<float[]> find(int navmeshId, float x1, float y1, float z1, float x2, float y2, float z2);
 
+	// raycast
+	// 返回路径点列表，注意，查找不到时，会返回null，或list.size==0
+	public native List<float[]> raycast(int navmeshId, float x1, float y1, float z1, float x2, float y2, float z2);
+
+	
 	// 释放加载的地图数据
 	public native int release(int navmeshId);
 
